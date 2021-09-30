@@ -1,0 +1,96 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">EMPLOYEE MANAGER APP</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a *ngIf="authService.isAuthenticated" class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <!-- ako nisi autenticifiran ne prikazuj komponentu -->
+          </li>
+
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/counter']"
+              >Counter</a
+            >
+          </li> -->
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
+              >Fetch data</a
+            >
+          </li> -->
+
+          <li *ngIf="authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/employee']"
+              >Employees</a
+            >
+          </li>
+          <li *ngIf="authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/project']"
+              >Projects</a
+            >
+          </li>
+          <!-- <li *ngIf="authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/profile']"
+              >Your profile</a
+            >
+          </li> -->
+          <!-- <li *ngIf="authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/projectTeam']"
+              >Project team</a
+            >
+          </li> -->
+          
+          <li *ngIf="authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/team']"
+              >Teams</a
+            >
+          </li>
+          <li *ngIf="authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/tracking']"
+              >Tracking</a
+            >
+          </li>
+          <!-- <li *ngIf="authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/employeeTeam']"
+              >Employee-Team</a
+            >
+          </li> -->
+          <li *ngIf="!authService.isAuthenticated" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/login']"
+              >Login</a
+            >
+          </li>
+
+          <button *ngIf="authService.isAuthenticated" class="btn btn-warning" (click)="logout()">Logout</button>
+       
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/logout']"
+              >Logout</a
+            >
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

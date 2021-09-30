@@ -1,0 +1,23 @@
+<div id="add">
+    <form [formGroup]="forma" (ngSubmit)="OnSubmit()">
+        <div class="form-group">
+            <label>Employee:</label>
+            <select class="form-control"  formControlName="employeeID"  >
+                <!-- <option>Choose employee</option> -->
+              <option *ngFor="let employee of employeeList" [value]="employee.employeeID">
+                  {{employee.firstName}}{{employee.lastName}}
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Team</label>
+            <select class="form-control" formControlName="teamID">
+                <!-- <option>Choose team</option> -->
+                <option *ngFor="let team of teamList" [value]="team.teamID">
+                    {{team.teamName}}
+                </option>
+            </select>
+        </div>
+        <button class="btn btn-primary" [disabled]="!forma.valid">Update</button>
+    </form>
+</div>

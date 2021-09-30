@@ -1,0 +1,11 @@
+#list{
+    width: 50%;
+    height: 900px;
+    float: left;
+}
+#add{
+    padding-left: 20px;
+    width: 50%;
+    float: left;
+    height: 900px;
+}

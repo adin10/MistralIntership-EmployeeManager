@@ -1,0 +1,36 @@
+<form [formGroup]="forma" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Team</label>
+        <select class="form-control" formControlName="employeeTeamID" (change)="updateProjects()">
+            <!-- <option>Choose team</option> -->
+            <option *ngFor="let employeeTeam of employeeTeamList" [value]="employeeTeam.employeeTeamID">
+                {{employeeTeam.team.teamName}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Project</label>
+        <select class="form-control" formControlName="projectTeamID">
+            <!-- <option>Choose team</option> -->
+            <option *ngFor="let projectTeam of projectTeamList" [value]="projectTeam.projectTeamID">
+                {{projectTeam.project.projectName}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" formControlName="description">
+        <span style="color: red;" *ngIf="forma.get('description').touched && forma.get('description').hasError('required')">Obavezno polje</span>
+    </div>
+    <div class="form-group">
+        <label>Date</label>
+        <input type="date" class="form-control" formControlName="date">
+        <span style="color: red;" *ngIf="forma.get('date').touched && forma.get('date').hasError('required')">Obavezno polje</span>
+    </div>
+    <div class="form-group">
+        <label>Work hours</label>
+        <input type="text" class="form-control" formControlName="workHours">
+        <span style="color: red;" *ngIf="forma.get('workHours').touched && forma.get('workHours').hasError('required')">Obavezno polje</span>
+    </div>
+    <button class="btn btn-primary" [disabled]="!forma.valid">Add</button>
+</form>

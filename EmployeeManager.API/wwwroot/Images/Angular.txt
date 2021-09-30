@@ -1,0 +1,182 @@
+npm install -g @angular/cli       -- Instalacija angulara, prije toga trebamo skinuti node.js
+ng --version                      -- Provjera instalirane verzije
+
+Kreiranje projekta:
+- u visual studio kodu otvoriti terminal
+- ng new nazivProjekta
+
+cd nazivProjekta   		  -- ulazak u kreirani projekat
+ng serve			  -- otvaranje projekta u web browseru (chromu)
+
+ng g c NazivKomponente            -- nacin kreiranja komponenti
+ng g s nazivServisa               -- nacin kreiranja servisa
+
+
+ng build -- bild projekta
+
+
+code .             --otvaranje projekta iz command prompta u visual studiu
+http://localhost:12848/api/
+
+
+
+https://www.youtube.com/watch?v=9WVG-tXl7XA  -- web api i angular Login
+
+
+________________________________________________________________________________________________
+
+UKLJUCIVANJE BIBLIOTEKA
+
+import{FormsModule} from '@angular/forms';  // forme
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';  // http request
+
+
+_________________________________________________________________________________________________
+RUTIRANJE
+
+app-routing.module.ts    -- ovdje namjestamo rutiranje
+moramo importovati servise
+
+u Routes stavljamo url gdje ce nas klik voditi npr osoblje/ListaOsoblja
+
+u app.component stavljamo router-outlet
+
+routerLink nas vodi na drugu stranicu (slicno hrefu u mvcu)
+
+routerLinkActive="active"  // boldira ono na sta smo kliknuli
+
+
+---------------------------------------------------------------------------------------------------
+BOOTSTRAP        npm install bootstrap jquery popper.js --save
+
+
+
+
+ubacivanje u angular.json:
+u arhitect,build, styles ubacujemo  ""node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+u arhitect,build, scripts ubacujemo   "node_modules/jquery/dist/jquery.min.js"
+				      "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+ngIf - else
+
+<p *ngIf="serverCreated";else noServer>Server was created</p> // naziv u elseu mora odgovarati nazivu
+
+<ng-template #noServer>					      // u ng-templateu	(u ovom slucaju #noServer)					
+<p>No Server was created!<p/>
+</ng-template>
+
+
+pipe znak | npr {{grad | uppercase}} // grad ispise u velikim slovima
+<hr> horizontal line
+
+eventEmiter - obratiti paznju
+
+
+this.route.params.subscribe() // kada zelimo promjeniti podatke stranice na kojoj se vec nalazimo
+npr imamo adin smajkic 10 godina i promjenimo u adin smajkic 12 godina
+
+queryparams - ko u rs2 search  npr  getkorisnicji?KorisnickoIme="Adin"
+
+canActivate: autentifikacija
+
+              			    
+
+
+--------------------------------------------------------------------------------------------------------
+
+https://www.youtube.com/watch?v=iZ1mlcCkY8A&t=9812s   -- link 1
+
+https://www.youtube.com/watch?v=4a9VxZjnT7E&t=1291s   -- link 2 sql,asp.net core i angular
+
+----------------------------------------------------------------------------------------------
+
+
+
+     // Enable CORS         KORS OMOGUĆAVA DA POKRENEMO API NA VISE RAZLICITIH PROJEKATA
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                });
+            });
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
+
+
+   services.AddMvc().AddJsonOptions(o =>
+            { // s ovim smo omoguićili da nemamo problema s pocentim malim ili velikim slovom
+                o.JsonSerializerOptions.PropertyNamingPolicy = null;
+                o.JsonSerializerOptions.DictionaryKeyPolicy = null;
+            });
+
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+<!-- <div id="divheader" style="margin:0" class="container">
+    <nav id="navheader" class="navbar navbar-expand-sm bg-light navbar-light">
+      <ul class="navbar nav classCenter">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="grad">Lista gradova</a>    
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="drzava">Lista država</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="soba-status">lista statusa</a>
+        </li>
+        <li class="nav-item"> 
+            <a class="nav-link" routerLink="osoblje">Osoblje</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="soba">Soba</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="gosti">Gosti</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="cjenovnik">Cjenovnik</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="novosti">Novosti</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="rezervacija">Rezervacije</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="checkout">Checkout</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="registracija">Registriraj se</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="reactiveforms">Reactive-forms</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="updateGrad/:id">Uređivanje</a>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="upload">Za sliku</a>
+        </li>
+        <!-- <li class="nav-item"> 
+            <a class="nav-link" routerLink="pokusaj">Pokusaj</a>
+        </li> -->
+       
+      </ul>
+    </nav>
+ </div> -->

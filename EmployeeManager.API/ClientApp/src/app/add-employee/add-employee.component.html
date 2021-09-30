@@ -1,0 +1,76 @@
+<div id="add">
+    <!-- <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Uspjesno dodano!</strong> Successfully added.
+        <button (click)="CloseClick()" type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+    <form [formGroup]="forma" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="Name">
+            <span style="color: red;" *ngIf="forma.get('Name').touched && forma.get('Name').hasError('required')">Obavezno polje</span>
+        </div>
+        <div class="form-group">
+            <label>Last name</label>
+            <input type="text" class="form-control" formControlName="LastName">
+            <span style="color: red;" *ngIf="forma.get('LastName').touched && forma.get('LastName').hasError('required')">Obavezno polje</span>
+        </div>
+        <div class="form-group">
+            <label>Date  of employment</label>
+            <input type="date" class="form-control" formControlName="DateEmployment">
+        </div>
+        <div class="form-group">
+            <label>Skils</label>
+            <input type="text" class="form-control" formControlName="Skils">
+        </div>
+        <div class="form-group">
+            <label>Gender</label>
+            <input type="text" class="form-control" formControlName="Gender">
+        </div>
+
+        <div class="form-group">
+            <label>Active</label>
+            <input type="checkbox" formControlName="Active">
+        </div>
+
+        
+         <!-- <input type="file" (change)="onFileChanged($event)">  emir -->
+         <!-- <app-upload (onUploadFinished)="uploadFinished($event)" ></app-upload> -->
+        <!-- <div class="form-group">
+            <input type="file" (change)="uploadFile($event)">
+        </div> -->
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" formControlName="Email">
+        </div> 
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="Username">
+        </div> 
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="Password">
+        </div>
+        <div class="form-group">
+            <label>Confirm password</label>
+            <input type="password" class="form-control" formControlName="ConfirmationPassword">
+        </div>
+
+        <div class="container">
+            <label>Add employee in team</label>
+            <div class="col-md-12">
+                <div class="row" *ngFor="let team of teams; let i = index">
+                    <div class="col-md-1">
+                        <input type="checkbox" (change)="addTeam(team.teamID)">
+                    </div>
+                    <div class="col-md-10">
+                        {{team.teamName}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button style="text-align: center;" class="btn btn-primary" [disabled]="!forma.valid">Add employee</button>
+    </form>
+</div>

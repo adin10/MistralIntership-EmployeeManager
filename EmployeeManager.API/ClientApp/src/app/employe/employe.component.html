@@ -1,0 +1,37 @@
+
+<div id="list">
+    <nav class="navbar">
+        <span>Filter</span>
+        <input class="form-control" type="text" name="FirstName" [(ngModel)]="FirstName" (change)="Search()" placeholder="Search first name">
+        <input class="form-control" type="text" name="LastName" [(ngModel)]="LastName" (change)="Search()" placeholder="Search last name">
+    </nav>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <td>First name</td>
+            <td>Last name</td>
+            <td>Date employment</td>
+            <td>Skills</td>
+            <td>Gender</td>
+            <td>Active</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of EmployeeList | paginate : {itemsPerPage:3,currentPage:p}">
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.dateEmployment | date}}</td>
+            <td>{{employee.skils}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.active}}</td>
+            <td routerLink="/updateEmployee/{{employee.employeeID}}" class="fa fa-edit" style="font-size:25px;color:orange;text-align: center;"></td>
+            <td><i (click)="deleteEmployee(employee.employeeID)" class="fa fa-trash" style="font-size:25px;color:red;text-align: center;"></i></td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="p=$event"></pagination-controls>
+<button class="btn btn-primary" routerLink="/addEmployee">Add new eployee</button>
+</div>
+
